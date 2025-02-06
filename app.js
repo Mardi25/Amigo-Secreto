@@ -1,15 +1,18 @@
-//agregar nombre a lista
-//generar amigo secreto no repetido
-//limpiar lista cuando se genere el total de 
 let amigos = [];
 
+
 function agregarAmigo() {
-    let input = document.getElementById('amigo');
-    let nombre = input.value();
-    if (nombre.includes(nombre)) {
-        amigos.push(nombre);
-        let listaAmigos = document.getElementById('listaAmigos');
+    let nombre = document.getElementById(`amigo`);
+    if ( nombre != amigos) {
+        let nuevoAmigo = { id: amigos.length + 1, nombre };
+        amigos.push(nuevoAmigo);
+        const listaAmigos = document.getElementById('listaAmigos');
+        const li = document.createElement('li');
+        li.textContent = `${nuevoAmigo.id}: ${nuevoAmigo.nombre}`;
         input.value = '';
+    } else ( nombre === amigos); {
+        alert ('Este nombre ya esta en la lista');
+        console.log (agregarAmigo);
     }
     
 }
@@ -21,9 +24,13 @@ function sortearAmigo(){
         alert('Se necesitan al menos 2 amigos para amigo secreto')
         return;    
     }
-    let amigos = Math.floor(Math.random()*listaAmigos.length);
+
+    if(listaAmigos.length == amigos){
+        alert ('Ya se sortearon todos los nombres')
+        return agregarAmigo
+    } 
 }
-function limpiarCaja() {
-    document.querySelector('#amigo').value = '';
-    
+function actualizarListaAmigos() {
+    let listaAmigos = document.getElementById('listAmigos');
+    listaAmigos.innerHTML = '';
 }
